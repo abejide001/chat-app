@@ -8,8 +8,8 @@ import (
 	"github.com/gorilla/websocket"
 )
 
-var upgrader =  websocket.Upgrader{
-	ReadBufferSize: 4096,
+var upgrader = websocket.Upgrader{
+	ReadBufferSize:  4096,
 	WriteBufferSize: 4096,
 }
 
@@ -22,11 +22,11 @@ type Client struct {
 func newClient(conn *websocket.Conn) *Client {
 	return &Client{
 		conn: conn,
-	}	
+	}
 }
 
 // ServeWs hanldes websocket request from client request
-func ServeWs(w http.ResponseWriter, r *http.Request)  {
+func ServeWs(w http.ResponseWriter, r *http.Request) {
 	conn, err := upgrader.Upgrade(w, r, nil)
 
 	if err != nil {
